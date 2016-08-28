@@ -1,13 +1,21 @@
 package com.pfariasmunoz.starbuzz;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.ListActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-public class DrinkCategoryActivity extends AppCompatActivity {
+public class DrinkCategoryActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drink_category);
+        ListView listDrinks = getListView();
+        // this populates the list view with data from the drinks array
+        ArrayAdapter<Drink> listAdapter = new ArrayAdapter<Drink>(
+                this,
+                android.R.layout.simple_expandable_list_item_1,
+                Drink.drinks);
+        listDrinks.setAdapter(listAdapter);
     }
 }
